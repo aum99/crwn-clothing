@@ -20,6 +20,11 @@ const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
+
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
@@ -42,11 +47,6 @@ const SignUp = () => {
       }
       console.log("User creation encountered an error", err);
     }
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormFields({ ...formFields, [name]: value });
   };
 
   return (
