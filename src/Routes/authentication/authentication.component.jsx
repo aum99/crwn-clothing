@@ -1,5 +1,5 @@
-import SignUp from "../../components/sign-up/sign-up.components";
-import SignInForm from "../../components/sign-in-form/sign-in-form-components";
+import SignUp from "../../components/sign-up/sign-up.component";
+import SignInForm from "../../components/sign-in-form/sign-in-form-component";
 
 import "./authentication.styles.scss";
 

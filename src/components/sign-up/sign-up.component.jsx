@@ -4,8 +4,7 @@ import {
   createAuthWithUserAndPassword,
   createUserDocumentFromAuth,
 } from "../../utlis/firebase/firebase.utlis";
-import { UserContext } from "../../contexts/user.context";
-import Button from "../button/button.components";
+import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 import "./sign-up.styles.scss";
 
