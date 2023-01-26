@@ -1,10 +1,12 @@
 import { initializeApp } from "firebase/app";
 import {
-  signInWithPopup,
-  GoogleAuthProvider,
   getAuth,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signInWithPopup,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 import { doc, getDoc, setDoc, getFirestore } from "firebase/firestore";
@@ -36,12 +38,8 @@ export const createUserDocumentFromAuth = async (
   additionalInformation = {}
 ) => {
   const userDocRef = doc(db, "users", userAuth.uid);
-  console.log(userDocRef);
 
   const userSnapShot = await getDoc(userDocRef);
-
-  console.log(userSnapShot);
-  console.log(userSnapShot.exists());
 
   if (!userSnapShot.exists()) {
     const { displayName, email } = userAuth;
@@ -69,4 +67,10 @@ export const createAuthWithUserAndPassword = async (email, password) => {
 export const signInAuthWithUserAndPassword = async (email, password) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
+};
+
+export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedListner = (callback) => {
+  onAuthStateChanged(auth, callback);
 };

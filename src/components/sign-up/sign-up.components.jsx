@@ -4,7 +4,7 @@ import {
   createAuthWithUserAndPassword,
   createUserDocumentFromAuth,
 } from "../../utlis/firebase/firebase.utlis";
-
+import { UserContext } from "../../contexts/user.context";
 import Button from "../button/button.components";
 import FormInput from "../form-input/form-input.component";
 import "./sign-up.styles.scss";
@@ -39,6 +39,7 @@ const SignUp = () => {
 
     try {
       const { user } = await createAuthWithUserAndPassword(email, password);
+
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (err) {
