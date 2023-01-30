@@ -3,13 +3,13 @@ import { createContext, useState, useEffect } from "react";
 const addCartItem = (cartItems, productToAdd) => {
   //if product to add in cart items
   const existingCartItem = cartItems.find(
-    (cartItem) => cartItem.id == productToAdd.id
+    (cartItem) => cartItem.id === productToAdd.id
   );
 
   //if exists increment by 1
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
-      cartItem.id == productToAdd.id
+      cartItem.id === productToAdd.id
         ? { ...cartItem, quantity: cartItem.quantity + 1 }
         : cartItem
     );
@@ -20,16 +20,16 @@ const addCartItem = (cartItems, productToAdd) => {
 
 const removeCartItem = (cartItems, productToRemove) => {
   const existingCartItem = cartItems.find(
-    (cartItem) => cartItem.id == productToRemove.id
+    (cartItem) => cartItem.id === productToRemove.id
   );
 
-  if (existingCartItem.quantity == 1) {
+  if (existingCartItem.quantity === 1) {
     return cartItems.filter((cartItem) => cartItem.id !== productToRemove.id);
   }
 
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
-      cartItem.id == productToRemove.id
+      cartItem.id === productToRemove.id
         ? { ...cartItem, quantity: cartItem.quantity - 1 }
         : cartItem
     );
