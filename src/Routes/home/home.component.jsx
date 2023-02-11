@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div>
       <Outlet />
-      <CategoryDirectory />;
+      <CategoryDirectory />
     </div>
   );
 };
