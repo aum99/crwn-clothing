@@ -1,9 +1,7 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
-import {
-  createAuthWithUserAndPassword,
-  createUserDocumentFromAuth,
-} from "../../utlis/firebase/firebase.utlis";
+import { signUpStart } from "../../store/user/user.action";
 
 import Button from "../button/button.components";
 
@@ -19,6 +17,7 @@ const defaultFormFields = {
 };
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -40,9 +39,7 @@ const SignUp = () => {
     }
 
     try {
-      const { user } = await createAuthWithUserAndPassword(email, password);
-
-      await createUserDocumentFromAuth(user, { displayName });
+      dispatch(signUpStart(email, password, displayName));
       resetFormFields();
     } catch (err) {
       if (err.code === "auth/email-already-in-use") {
