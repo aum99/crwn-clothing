@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProductCardContainer = styled.div`
-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   height: 350px;
@@ -32,6 +32,7 @@ width: 100%;
       opacity: 0.85;
       display: flex;
     }
+  }
 `;
 
 export const Footer = styled.div`
