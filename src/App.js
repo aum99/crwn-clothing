@@ -6,6 +6,8 @@ import { checkUserSession } from "./store/user/user.action";
 
 import Spinner from "./components/spinner/spinner.components";
 
+import { GlobalStyle } from "./global.styles";
+
 const Home = lazy(() => import("./Routes/home/home.component"));
 const Navigation = lazy(() =>
   import("./Routes/navigation/navigation.component")
@@ -25,6 +27,7 @@ const App = () => {
 
   return (
     <Suspense fallback={<Spinner />}>
+      <GlobalStyle />
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home />} />
